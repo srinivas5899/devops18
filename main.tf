@@ -1,7 +1,7 @@
 resource "aws_launch_configuration" "web_server_as" {
-    image_id           = "ami-0195204d5dce06d99"
+    image_id           = "ami-024ebc7de0fc64e44"
     instance_type = "t2.micro"
-    key_name = "final"
+    key_name = "ohio"
     security_groups = [aws_security_group.web_server.id]
 }
    
