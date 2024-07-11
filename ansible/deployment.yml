@@ -5,7 +5,7 @@
   user: ec2-user
 
   vars:
-    ansible_ssh_private_key_file: "/etc/ansible/final.pem"
+    ansible_ssh_private_key_file: "/etc/ansible/ohio.pem"
     ansible_ssh_user: "ec2-user"
 
   tasks:
@@ -26,7 +26,7 @@
 
     - name: get the source code from github
       git:
-        repo: "https://github.com/devops0014/staticsite-docker.git"
+        repo: "https://github.com/srinivas5899/static-cycle-website-jenkins-docker-.git"
         dest: /var/www/
         update: yes
         version: master
