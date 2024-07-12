@@ -1,7 +1,7 @@
 resource "aws_launch_configuration" "web_server_as" {
-    image_id           = "ami-024ebc7de0fc64e44"
+    image_id           = "ami-01fccab91b456acc2"
     instance_type = "t2.micro"
-    key_name = "ohio"
+    key_name = "pemfile"
     security_groups = [aws_security_group.web_server.id]
 }
    
@@ -10,7 +10,7 @@ resource "aws_launch_configuration" "web_server_as" {
   resource "aws_elb" "web_server_lb"{
      name = "web-server-lb"
      security_groups = [aws_security_group.web_server.id]
-     subnets = ["subnet-0ae58039d8006f2cb", "subnet-0eaec49af32c17ce8"]
+     subnets = ["subnet-026a5bdc70903d693", "subnet-0c7dd539d0c7064cd"]
      listener {
       instance_port     = 8000
       instance_protocol = "http"
@@ -29,7 +29,7 @@ resource "aws_autoscaling_group" "web_server_asg" {
     desired_capacity     = 2
     health_check_type    = "EC2"
     load_balancers       = [aws_elb.web_server_lb.name]
-    availability_zones    = ["us-east-2a", "us-east-2c"] 
+    availability_zones    = ["us-east-1a", "us-east-1c"] 
     
   }
 
