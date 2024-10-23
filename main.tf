@@ -1,7 +1,5 @@
 resource "aws_launch_configuration" "web_server_as" {
-    tags= {
-    Name="mono"
-    }
+    
     image_id           = "ami-0175bdd48fdb0973b"
     instance_type = "t2.micro"
     key_name = "california"
