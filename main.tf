@@ -1,7 +1,10 @@
 resource "aws_launch_configuration" "web_server_as" {
-    image_id           = "ami-01fccab91b456acc2"
+    tags= {
+    Name="mono"
+    }
+    image_id           = "ami-0175bdd48fdb0973b"
     instance_type = "t2.micro"
-    key_name = "pemfile"
+    key_name = "california"
     security_groups = [aws_security_group.web_server.id]
 }
    
@@ -10,7 +13,7 @@ resource "aws_launch_configuration" "web_server_as" {
   resource "aws_elb" "web_server_lb"{
      name = "web-server-lb"
      security_groups = [aws_security_group.web_server.id]
-     subnets = ["subnet-026a5bdc70903d693", "subnet-0c7dd539d0c7064cd"]
+     subnets = ["subnet-0fece32cecb74aa32", "subnet-036eddaf95a3706c8"]
      listener {
       instance_port     = 8000
       instance_protocol = "http"
@@ -29,7 +32,7 @@ resource "aws_autoscaling_group" "web_server_asg" {
     desired_capacity     = 2
     health_check_type    = "EC2"
     load_balancers       = [aws_elb.web_server_lb.name]
-    availability_zones    = ["us-east-1a", "us-east-1c"] 
+    availability_zones    = ["us-west-1a", "us-west-1c"] 
     
   }
 
